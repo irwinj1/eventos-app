@@ -1,7 +1,7 @@
 import React from 'react'
 import { crearCategoria } from '../../../services/catalogos/categorias/categorias.services'
 
-export function CrearCategoriaView() {
+export function CrearCategoriaView({respuesta}) {
   
         const nombre = document.getElementById('nombre')
         const color = document.getElementById('color')
@@ -14,7 +14,12 @@ export function CrearCategoriaView() {
             icono: icono.value
         }
         const response = await crearCategoria(data)
-        console.log(response)
+        if(response.status === 200){
+            respuesta()
+            nombre.value = ''
+            color.value = ''
+            icono.value = ''
+        }
     }
         
   return (

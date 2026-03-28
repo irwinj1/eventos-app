@@ -20,7 +20,7 @@ function App() {
 
   return (
     <>
-      <CrearCategoriaView  />
+      <CrearCategoriaView respuesta={respuesta}  />
       <Evento data={data} />
     </>
   )
