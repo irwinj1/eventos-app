@@ -9,7 +9,7 @@ export function Evento({data}) {
    <div className='grid grid-cols-4 gap-2'>
       {
         data.map(item=>(
-          <EventoComponent item={item} />
+          <EventoComponent item={item} key={item.id} />
         ))
       }
    </div>

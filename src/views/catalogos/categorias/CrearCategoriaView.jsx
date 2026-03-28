@@ -14,7 +14,9 @@ export function CrearCategoriaView({respuesta}) {
             icono: icono.value
         }
         const response = await crearCategoria(data)
-        if(response.status === 200){
+        console.log(response);
+        
+        if(response){
             respuesta()
             nombre.value = ''
             color.value = ''
