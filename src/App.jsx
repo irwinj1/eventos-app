@@ -14,6 +14,8 @@ function App() {
       alert(error.message)
     }
   }
+  console.log(data);
+  
   useEffect(() => {
     respuesta()
   }, [])

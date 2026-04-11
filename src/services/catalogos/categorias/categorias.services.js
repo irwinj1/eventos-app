@@ -1,10 +1,9 @@
-const url = import.meta.env.VITE_URL_BACK
+import api from "../../../utils/db/api"
 
 const categorias = async()=>{
     try {
-        const response = await fetch(url+'/catalogos/categorias')
-      const data = await response.json() 
-      return data.data
+        const response = await api.get('/catalogos/categorias')
+      return response.data.data
     } catch (error) {
         console.log(error.message)
     }
@@ -12,15 +11,8 @@ const categorias = async()=>{
 
 const crearCategoria = async(data)=>{
     try {
-        const response = await fetch(url+'/catalogos/categorias',{
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-        const res = await response.json() 
-        return res.data
+        const response = await api.post('/catalogos/categorias',data)
+        return response.data
     } catch (error) {
         console.log(error.message)
     }
@@ -28,14 +20,8 @@ const crearCategoria = async(data)=>{
 
 const eliminarCategoria = async(id)=>{
     try {
-        const response = await fetch(url+'/catalogos/categorias/'+id,{
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        const res = await response.json() 
-        return res
+        const response = await api.delete('/catalogos/categorias/'+id)
+        return response.data
     } catch (error) {
         console.log(error.message)
     }
