@@ -25,7 +25,23 @@ const crearCategoria = async(data)=>{
         console.log(error.message)
     }
 }
+
+const eliminarCategoria = async(id)=>{
+    try {
+        const response = await fetch(url+'/catalogos/categorias/'+id,{
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        const res = await response.json() 
+        return res
+    } catch (error) {
+        console.log(error.message)
+    }
+}
 export {
     categorias,
-    crearCategoria
+    crearCategoria,
+    eliminarCategoria
 }

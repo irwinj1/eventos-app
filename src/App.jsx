@@ -21,7 +21,7 @@ function App() {
   return (
     <>
       <CrearCategoriaView respuesta={respuesta}  />
-      <Evento data={data} />
+      <Evento data={data} respuesta={respuesta} />
     </>
   )
 }
