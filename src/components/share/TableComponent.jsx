@@ -4,7 +4,7 @@ import { PaginationComponent } from "./PaginationComponent";
 export function TableComponent({ headers = [], items = [], actions = [] }) {
   return (
    <>
-   <table className="min-w-full border border-gray-200 rounded-lg overflow-hidden">
+   <table className="w-full border border-gray-200 rounded-lg overflow-hidden">
         <thead className="bg-gray-100">
           <tr>
             {headers.map((header, index) => (
@@ -72,7 +72,7 @@ export function TableComponent({ headers = [], items = [], actions = [] }) {
           )}
         </tbody>
       </table>
-      <PaginationComponent />
+      
    </>
   );
 };

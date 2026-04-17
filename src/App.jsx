@@ -3,15 +3,18 @@ import { CrearCategoriaView } from './views/catalogos/categorias/CrearCategoriaV
 import {DashboardRoute} from './Navigation/Dashboard'
 import { Auth } from './Navigation/auth'
 import './utils/css/app.css'
+import { LayoutProvider } from './context/SidebarContext'
 
 function App() {
   
-  const [isLogin,setIsLogin] = useState(false)
+  const [isLogin,setIsLogin] = useState(true)
   
-
+const AppRoutes = ()=>isLogin ? <DashboardRoute /> : <Auth />
 
   return (
-      <DashboardRoute />
+    <LayoutProvider>
+      <AppRoutes />
+    </LayoutProvider>
   )
 }
 
