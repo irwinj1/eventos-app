@@ -7,11 +7,14 @@ import { Modal } from '../../../components/share/modal.component'
 
 export function CategoriasView() {
   const [data, setData] = useState([])
+  const [categorie,setCategorie] = useState({})
   const [isOpen, setIsOpen] = useState(false)
+  const [isVer, setIsVer] = useState(false)
   const onClose = () => setIsOpen(false)
-  const respuesta = async () => {
+  const onVerClose = () => setIsVer(false)  
+  const respuesta = async (page = 1) => {
     try {
-      const data = await categorias()
+      const data = await categorias(page)
       setData(data)
     } catch (error) {
       alert(error.message)
@@ -31,27 +34,31 @@ export function CategoriasView() {
   ];
   const eliminar = async (item) => {
     const response = await eliminarCategoria(item.id)
-    console.log(response)
     if (response.status === 200) {
       respuesta()
     }
   }
-  const items = data;
+  const items = data.data;
+  const totalPages = data?.pagination?.lastpage || 1;
+  const currentPage = data?.pagination?.currentPage || 1;
 
   const actions = [
     {
       label: "Ver",
-      className: "bg-gray-500 hover:bg-gray-600",
-      onClick: (item) => console.log("Ver", item),
+      className: "bg-gray-500 hover:bg-gray-600 rounded-full cursor-pointer",
+      icon: "FaRegEye",
+      onClick: (item) => {setIsVer(true); setCategorie(item)},
     },
     {
       label: "Editar",
-      className: "bg-blue-500 hover:bg-blue-600",
+      className: "bg-blue-500 hover:bg-blue-600 rounded-full cursor-pointer",
+      icon: "FaRegEdit",
       onClick: (item) => console.log("Editar", item),
     },
     {
       label: (item) => item.estado ? "Desactivar" : "Activar",
-      className: (item) => item.estado ? "bg-red-500 hover:bg-red-600" : "bg-green-500 hover:bg-green-600",
+      className: (item) => item.estado ? "bg-red-500 hover:bg-red-600 rounded-full cursor-pointer" : "bg-green-500 hover:bg-green-600 rounded-full p-2 cursor-pointer",
+      icon: (item) => item.estado ? "FaRegTrashAlt" : "FaRegCheckCircle",
       onClick: (item) => eliminar(item),
     },
   ];
@@ -68,7 +75,7 @@ export function CategoriasView() {
         <button onClick={() => setIsOpen(true)} className='bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium'>Crear Categoria</button>
       </div>
 
-      <Categorias headers={headers} items={items} actions={actions} isOpen={isOpen} onClose={onClose} />
+      <Categorias headers={headers} items={items} actions={actions} isOpen={isOpen} onClose={onClose} isVer={isVer} onVerClose={onVerClose} categorie={categorie} respuesta={respuesta} totalPages={totalPages} currentPage={currentPage} />
       
       </div>
 

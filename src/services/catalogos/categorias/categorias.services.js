@@ -1,9 +1,9 @@
 import api from "../../../utils/db/api"
 
-const categorias = async()=>{
+const categorias = async(page = 1)=>{
     try {
-        const response = await api.get('/catalogos/categorias')
-      return response.data.data
+        const response = await api.get(`/catalogos/categorias?page=${page}`)
+      return response.data
     } catch (error) {
         console.log(error.message)
     }
