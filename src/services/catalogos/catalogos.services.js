@@ -16,16 +16,10 @@ const departamentos = async(id_pais)=>{
         console.log(error.message)
     }
 }
-const municipios = async(id_departamento,params)=>{
+const municipios = async(id_departamento)=>{
     try {
-        const response = await api.get('/catalogos/municipios',
-            {
-                params:{
-                id_departamento,
-                ...params
-            }
-        })
-        return response.data.data
+        const response = await api.get('/catalogos/municipios?id_departamento='+id_departamento)
+        return response.data
     } catch (error) {
         console.log(error.message)
     }
@@ -34,7 +28,7 @@ const municipios = async(id_departamento,params)=>{
 const distritos = async(id_municipio)=>{
     try {
         const response = await api.get('/catalogos/distritos?id_municipio='+id_municipio)
-        return response.data.data
+        return response.data
     } catch (error) {
         console.log(error.message)
     }

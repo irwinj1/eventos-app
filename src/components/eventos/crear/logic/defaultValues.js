@@ -1,14 +1,13 @@
-export const defaultValues = {
+export const valoresDefecto = {
     nombre: '',
     descripcion: '',
-    slug: '',
+    direccion:'',
     id_pais: 0,
     id_departamento: 0,
     id_municipio: 0,
     id_distrito: 0,
     fecha_inicio: '',
     fecha_fin: '',
-    capacidad: 0,
     id_categoria: 0,
     imagen: '',
     localidad: '',

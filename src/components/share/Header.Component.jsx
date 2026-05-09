@@ -21,12 +21,12 @@ export default function Header() {
             </button>
 
             <div className="hidden md:flex items-center bg-gray-50 border border-gray-100 rounded-xl px-4 py-2 w-64 focus-within:ring-2 focus-within:ring-indigo-100 transition-all">
-              <FaMagnifyingGlass className="text-gray-400 w-4 h-4 mr-2" />
-              <input 
+              {/* <FaMagnifyingGlass className="text-gray-400 w-4 h-4 mr-2" /> */}
+              {/* <input 
                 type="text" 
                 placeholder="Buscar..." 
                 className="bg-transparent border-none outline-none text-sm text-gray-600 w-full"
-              />
+              /> */}
             </div>
           </div>
 
